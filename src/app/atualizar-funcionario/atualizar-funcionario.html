@@ -1,0 +1,99 @@
+<div class="containerFormulario mat-elevation-z2" style="
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Roboto, Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+">
+  <h2>Atualizar Funcionário</h2>
+
+  <form [formGroup]="funcionarioForm" (ngSubmit)="atualizarFuncionario()">
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" placeholder="Digite o nome" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Sobrenome</mat-label>
+      <input matInput formControlName="sobrenome" placeholder="Digite o sobrenome" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Sexo</mat-label>
+      <mat-select formControlName="sexo">
+        <mat-option value="Masculino">Masculino</mat-option>
+        <mat-option value="Feminino">Feminino</mat-option>
+        <mat-option value="Outro">Outro</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Data de Nascimento</mat-label>
+      <input matInput [matDatepicker]="pickerNascimento" formControlName="dtNascimento" />
+      <mat-datepicker-toggle matSuffix [for]="pickerNascimento"></mat-datepicker-toggle>
+      <mat-datepicker #pickerNascimento></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Grau de Escolaridade</mat-label>
+      <input matInput formControlName="grauEscolaridade" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Endereço</mat-label>
+      <textarea matInput formControlName="endereco"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Foto</mat-label>
+      <input matInput formControlName="foto" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Salário</mat-label>
+      <input matInput type="number" formControlName="salario" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Valor da Passagem</mat-label>
+      <input matInput type="number" step="0.01" formControlName="valorPassagem" />
+    </mat-form-field>
+
+    <mat-checkbox formControlName="optouVT">Optou por VT?</mat-checkbox>
+
+    <h3 style="margin-top: 30px;">Histórico de Cargos e Salários</h3>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Cargo</mat-label>
+      <input matInput formControlName="cargo" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Data Início</mat-label>
+      <input matInput [matDatepicker]="pickerInicio" formControlName="dataInicio" />
+      <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Data Demissão</mat-label>
+      <input matInput [matDatepicker]="pickerFim" formControlName="dataDemissao" />
+      <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFim></mat-datepicker>
+    </mat-form-field>
+
+    <div style="margin-top: 20px; text-align: center;">
+      <button mat-raised-button color="primary" type="submit" [disabled]="funcionarioForm.invalid">
+        Atualizar
+      </button>
+      <button mat-raised-button color="warn" type="button" style="margin-left: 10px" (click)="voltar()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

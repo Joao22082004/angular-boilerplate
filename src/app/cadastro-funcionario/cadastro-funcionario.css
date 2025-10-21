@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: column; /* ✅ precisa estar em inglês */
+  align-items: flex-start;
+  gap: 16px; /* opcional: adiciona espaçamento entre os campos */
+  width: 100%;
+}
+
+mat-form-field {
+  width: 80%;
+}

@@ -14,7 +14,7 @@ export class FuncionariosService {
     return this.http.get(this.apiUrl)
   }
 
-  getUserById(id?: string) {
+  getUserById(id: string) {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
@@ -23,7 +23,7 @@ export class FuncionariosService {
   }
 
   updateById(id: string, dados: any) {
-    return this.http.put(`https://sua-api.com/api/funcionarios/${id}`, dados);
+    return this.http.put(`${this.apiUrl}/${id}`, dados);
   }
 
   postFuncionarios(formulario: any) {

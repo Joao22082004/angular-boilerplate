@@ -13,19 +13,15 @@
       {{salarioAtual | currency : 'BRL'}}
     </p>
     <b *ngIf="optouVT">
-      Este usuário é optou pelo VT
+      Este usuário optou pelo VT
     </b>
 
   </mat-card-content>
   <br>
-  <button (click)="deletarFuncionario(id)">
+  <button mat-raised-button color="primary" (click)="deletarFuncionario(id)">
     Deletar Funcionário
   </button>
-  <button mat-raised-button color="primary" (click)="irParaAtualizar(funcionario._id)">
+  <button mat-raised-button color="primary" (click)="irParaAtualizar(id)">
     Atualizar
   </button>
-  <mat-card-actions>
-    <button matButton>LIKE</button>
-    <button matButton>SHARE</button>
-  </mat-card-actions>
 </mat-card>

@@ -1,12 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FuncionariosService } from '../services/funcionarios';
 
+// Angular Material
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 @Component({
   selector: 'app-atualizar-funcionario',
-  templateUrl: './atualizar-funcionario.component.html',
-  styleUrls: ['./atualizar-funcionario.component.css']
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCheckboxModule
+  ],
+  templateUrl: './atualizar-funcionario.html',
+  styleUrls: ['./atualizar-funcionario.css']
 })
 export class AtualizarFuncionario implements OnInit {
   funcionarioForm!: FormGroup;
@@ -40,7 +60,7 @@ export class AtualizarFuncionario implements OnInit {
       foto: [''],
       salario: ['', [Validators.min(0)]],
       valorPassagem: ['', [Validators.min(0)]],
-      optouVT: [false],
+      optouVT: [],
       cargo: [''],
       dataInicio: [''],
       dataDemissao: ['']
@@ -60,4 +80,5 @@ export class AtualizarFuncionario implements OnInit {
     this.router.navigate(['/lista']);
   }
 }
+
 

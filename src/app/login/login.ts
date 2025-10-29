@@ -30,6 +30,6 @@ export class Login {
     const email: string = form.controls.email.value;
     const password: string = form.controls.password.value;
     this.auth.login(email, password);
-    this.router.navigate(['/listaF']);
+    this.router.navigate(['/lista']);
   }
 }

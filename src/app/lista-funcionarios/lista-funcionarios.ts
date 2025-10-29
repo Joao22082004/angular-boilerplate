@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FuncionariosService } from '../services/funcionarios';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-lista-funcionarios',
@@ -11,26 +13,43 @@ import { Router } from '@angular/router';
 
 export class ListaFuncionarios implements OnInit {
 
-  constructor(private funcionarios: FuncionariosService ,private router : Router) { }
+  constructor(private funcionariosService: FuncionariosService, private router: Router, private route: ActivatedRoute) { }
 
-  displayedColumns: string[] = ['nome', 'sobrenome', 'dtNascimento', 'salario','detalhes'];
-  funcionariosLista = [];
+  displayedColumns: string[] = ['nome', 'sobrenome', 'dtNascimento', 'salario', 'detalhes'];
+  funcionariosLista: any[] = [];
+  idUsuario: any = "";
+  usuario: any;
 
-  ngOnInit() {
-    this.getFuncionarios();
+  ngOnInit(): void {
+  this.getFuncionarios();
+
+  this.route.paramMap.subscribe(params => {
+    this.idUsuario = params.get('id');
+    if (this.idUsuario) {
+      this.getUserDetails(this.idUsuario);
+    }
+  });
+}
+
+  getUserDetails(id: any) {
+    return this.funcionariosService.getUserById(id)
+      .subscribe((data: any) => {
+        this.usuario = data
+        console.log(this.usuario)
+      });
   }
 
   getFuncionarios() {
-    this.funcionarios.getUsers().subscribe((data : any)=>{
+    this.funcionariosService.getUsers().subscribe((data: any) => {
       this.funcionariosLista = data;
     })
   }
 
   detalhesFuncionario(id: Number) {
-    this.router.navigate(['detalhes',id]);
+    this.router.navigate(['detalhes', id]);
   }
 
-  cadastrarFuncionario() : void {
+  cadastrarFuncionario(): void {
     this.router.navigate(['/cadastrar']);
   }
 

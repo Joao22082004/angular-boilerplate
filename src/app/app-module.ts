@@ -22,7 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AtualizarFuncionario } from './atualizar-funcionario/atualizar-funcionario';
+
 
 
 @NgModule({
@@ -34,7 +34,6 @@ import { AtualizarFuncionario } from './atualizar-funcionario/atualizar-funciona
     Login,
     Detalhes,
     Card,
-    AtualizarFuncionario,
   ],
   imports: [
     BrowserModule,
